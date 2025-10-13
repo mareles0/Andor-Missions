@@ -84,6 +84,7 @@ def create_mission_card(mission: dict, on_click=None, show_full_info: bool = Fal
         "active": COLORS["accent"],
         "completed": COLORS["success"],
         "failed": "#f44336",
+        "critical": "#000000",  # Preto para status crítico
     }
     
     status_text = {
@@ -91,10 +92,13 @@ def create_mission_card(mission: dict, on_click=None, show_full_info: bool = Fal
         "active": "Ativa",
         "completed": "Concluída",
         "failed": "Falhou",
+        "critical": "Crítica",
     }
     
     status = mission.get("status", "pending")
     
+    # Cor do texto do status (branco para fundo escuro)
+    status_text_color = "#FFFFFF" if status == "critical" else COLORS["background"]
     
     danger_stars = "⚠️ " * mission.get("danger_level", 1)
     
@@ -111,7 +115,7 @@ def create_mission_card(mission: dict, on_click=None, show_full_info: bool = Fal
                 content=ft.Text(
                     status_text.get(status, status),
                     size=12,
-                    color=COLORS["background"],
+                    color=status_text_color,
                     weight=ft.FontWeight.BOLD,
                 ),
                 bgcolor=status_colors.get(status, COLORS["secondary"]),

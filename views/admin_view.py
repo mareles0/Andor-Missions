@@ -2,7 +2,7 @@
 import flet as ft
 
 from ui_components import *
-from database import db
+from supabase_client import db
 from auth import session
 
 
@@ -112,18 +112,18 @@ class AdminView(ft.View):
         )
     
     def load_missions(self):
-        
-        self.missions = db.get_missions()
+        token = session.access_token
+        self.missions = db.get_missions(token)
         self.render_missions()
     
     def handle_search(self, e):
-        
+        token = session.access_token
         search_term = self.search_field.value
         
         if search_term:
-            self.missions = db.search_missions(search_term)
+            self.missions = db.search_missions(search_term, token)
         else:
-            self.missions = db.get_missions()
+            self.missions = db.get_missions(token)
         
         self.render_missions()
     
@@ -232,6 +232,7 @@ class AdminView(ft.View):
                 description=description_field.value or "",
                 status=status_dropdown.value,
                 danger_level=int(danger_slider.value),
+                access_token=session.access_token
             )
             
             if result:
@@ -308,6 +309,7 @@ class AdminView(ft.View):
                 description=description_field.value,
                 status=status_dropdown.value,
                 danger_level=int(danger_slider.value),
+                access_token=session.access_token
             )
             
             if result:
@@ -342,7 +344,7 @@ class AdminView(ft.View):
     def show_delete_confirm(self, mission):
         
         def delete_mission(e):
-            if db.delete_mission(mission["id"]):
+            if db.delete_mission(mission["id"], session.access_token):
                 show_snack(self.page, create_alert("Missão excluída!"))
                 self.page.close(dialog)
                 self.load_missions()

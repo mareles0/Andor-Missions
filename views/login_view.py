@@ -1,7 +1,7 @@
 import flet as ft
 from ui_components import *
-from database import db
 from auth import session
+from supabase_client import auth_manager
 
 
 class LoginView(ft.View):
@@ -95,8 +95,8 @@ class LoginView(ft.View):
             show_snack(self.page, create_alert("Preencha todos os campos", is_error=True))
             return
         
-        
-        result = db.login(email, password)
+        # Login via Supabase Auth
+        result = auth_manager.login(email, password)
         
         if result:
             

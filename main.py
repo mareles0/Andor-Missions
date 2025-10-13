@@ -16,10 +16,8 @@ def main(page: ft.Page):
     page.theme_mode = ft.ThemeMode.DARK
     page.bgcolor = COLORS["background"]
     page.padding = 0
-    page.window.width = 450
-    page.window.height = 800
-    page.window.min_width = 350
-    page.window.min_height = 600
+    # Configurações de janela removidas para web app
+    # A aplicação se adapta automaticamente ao tamanho da tela
     
     
     def on_login_success():
@@ -83,6 +81,6 @@ def main(page: ft.Page):
 
 
 if __name__ == "__main__":
-    
-    ft.app(target=main)
+    # Para web app: usa view=ft.AppView.WEB_BROWSER e port=8550
+    ft.app(target=main, view=ft.AppView.WEB_BROWSER, port=8550)
 

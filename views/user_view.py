@@ -2,7 +2,7 @@
 import flet as ft
 
 from ui_components import *
-from database import db
+from supabase_client import db
 from auth import session
 
 
@@ -95,18 +95,18 @@ class UserView(ft.View):
         )
     
     def load_missions(self):
-        
-        self.missions = db.get_missions()
+        token = session.access_token
+        self.missions = db.get_missions(token)
         self.render_missions()
     
     def handle_search(self, e):
-        
+        token = session.access_token
         search_term = self.search_field.value
         
         if search_term:
-            self.missions = db.search_missions(search_term)
+            self.missions = db.search_missions(search_term, token)
         else:
-            self.missions = db.get_missions()
+            self.missions = db.get_missions(token)
         
         self.render_missions()
     

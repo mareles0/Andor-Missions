@@ -1,7 +1,7 @@
 import flet as ft
 
 from ui_components import *
-from database import db
+from supabase_client import auth_manager
 
 
 class RegisterView(ft.View):
@@ -73,7 +73,6 @@ class RegisterView(ft.View):
         email = self.email_field.value
         password = self.password_field.value
         password_confirm = self.password_confirm_field.value
-        is_admin = False
         
         if not email or not password or not password_confirm:
             show_snack(self.page, create_alert("Preencha todos os campos", is_error=True))
@@ -87,7 +86,8 @@ class RegisterView(ft.View):
             show_snack(self.page, create_alert("A senha deve ter pelo menos 6 caracteres", is_error=True))
             return
         
-        result = db.register(email, password, is_admin)
+        # Registro via Supabase Auth (sempre como usuário normal)
+        result = auth_manager.register(email, password, is_admin=False)
         
         if result:
             show_snack(self.page, create_alert("Registro realizado com sucesso! Faça login."))
