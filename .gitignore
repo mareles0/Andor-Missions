@@ -31,9 +31,7 @@ share/python-wheels/
 MANIFEST
 
 # Environments
-# .env - COMENTADO para permitir deploy no Render
-# ⚠️ ATENÇÃO: O .env será público no repositório!
-# Para produção, use as variáveis de ambiente do Render Dashboard
+.env
 .venv
 env/
 venv/
