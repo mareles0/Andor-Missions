@@ -6,6 +6,15 @@ from views.register_view import RegisterView
 from views.user_view import UserView
 from views.admin_view import AdminView
 
+# Compatibilidade entre versões do Flet: algumas versões expõem `ft.icons` (minúsculo)
+# outras expõem `ft.Icons` (maiúsculo). Criamos aliases para que ambos funcionem
+# no mesmo código — isso evita erros quando o app roda em ambientes com versões
+# diferentes (ex.: local vs Render).
+if not hasattr(ft, "Icons") and hasattr(ft, "icons"):
+    ft.Icons = ft.icons
+elif not hasattr(ft, "icons") and hasattr(ft, "Icons"):
+    ft.icons = ft.Icons
+
 
 def main(page: ft.Page):
     
