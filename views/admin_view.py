@@ -17,7 +17,7 @@ class AdminView(ft.View):
         
         self.search_field = ft.TextField(
             label="Pesquisar missões",
-            prefix_icon=ft.icons.SEARCH,
+            prefix_icon=ft.Icons.SEARCH,
             border_color=COLORS["secondary"],
             focused_border_color=COLORS["accent"],
             color=COLORS["text"],
@@ -47,7 +47,7 @@ class AdminView(ft.View):
                                                     [
                                                         create_title("ADMIN"),
                                                         ft.Icon(
-                                                            ft.icons.ADMIN_PANEL_SETTINGS,
+                                                            ft.Icons.ADMIN_PANEL_SETTINGS,
                                                             color=COLORS["accent"],
                                                             size=32,
                                                         ),
@@ -64,7 +64,7 @@ class AdminView(ft.View):
                                             expand=True,
                                         ),
                                         ft.IconButton(
-                                            icon=ft.icons.LOGOUT,
+                                            icon=ft.Icons.LOGOUT,
                                             icon_color=COLORS["accent"],
                                             tooltip="Sair",
                                             on_click=lambda _: self.handle_logout(),
@@ -80,7 +80,7 @@ class AdminView(ft.View):
                                 [
                                     self.search_field,
                                     ft.IconButton(
-                                        icon=ft.icons.REFRESH,
+                                        icon=ft.Icons.REFRESH,
                                         icon_color=COLORS["text"],
                                         tooltip="Atualizar",
                                         on_click=lambda _: self.load_missions(),
@@ -88,7 +88,7 @@ class AdminView(ft.View):
                                     create_button(
                                         "Nova Missão",
                                         self.show_create_dialog,
-                                        icon=ft.icons.ADD,
+                                        icon=ft.Icons.ADD,
                                         color=COLORS["success"],
                                     ),
                                 ],
@@ -135,7 +135,7 @@ class AdminView(ft.View):
                 ft.Container(
                     content=ft.Column(
                         [
-                            ft.Icon(ft.icons.INBOX, size=64, color=COLORS["text"], opacity=0.3),
+                            ft.Icon(ft.Icons.INBOX, size=64, color=COLORS["text"], opacity=0.3),
                             ft.Text(
                                 "Nenhuma missão registrada",
                                 size=18,
@@ -166,19 +166,19 @@ class AdminView(ft.View):
         actions = ft.Row(
             [
                 ft.IconButton(
-                    icon=ft.icons.EDIT,
+                    icon=ft.Icons.EDIT,
                     icon_color=COLORS["warning"],
                     tooltip="Editar",
                     on_click=lambda e, m=mission: self.show_edit_dialog(m),
                 ),
                 ft.IconButton(
-                    icon=ft.icons.DELETE,
+                    icon=ft.Icons.DELETE,
                     icon_color=COLORS["accent"],
                     tooltip="Excluir",
                     on_click=lambda e, m=mission: self.show_delete_confirm(m),
                 ),
                 ft.IconButton(
-                    icon=ft.icons.INFO,
+                    icon=ft.Icons.INFO,
                     icon_color=COLORS["text"],
                     tooltip="Detalhes",
                     on_click=lambda e, m=mission: self.show_mission_detail(m),
@@ -257,7 +257,7 @@ class AdminView(ft.View):
             ),
             actions=[
                 ft.TextButton("Cancelar", on_click=lambda _: self.page.close(dialog)),
-                create_button("Criar", create_mission, icon=ft.icons.ADD),
+                create_button("Criar", create_mission, icon=ft.Icons.ADD),
             ],
         )
         
@@ -334,7 +334,7 @@ class AdminView(ft.View):
             ),
             actions=[
                 ft.TextButton("Cancelar", on_click=lambda _: self.page.close(dialog)),
-                create_button("Salvar", update_mission, icon=ft.icons.SAVE),
+                create_button("Salvar", update_mission, icon=ft.Icons.SAVE),
             ],
         )
         
@@ -358,7 +358,7 @@ class AdminView(ft.View):
             ),
             actions=[
                 ft.TextButton("Cancelar", on_click=lambda _: self.page.close(dialog)),
-                create_button("Excluir", delete_mission, icon=ft.icons.DELETE, color=COLORS["accent"]),
+                create_button("Excluir", delete_mission, icon=ft.Icons.DELETE, color=COLORS["accent"]),
             ],
         )
         

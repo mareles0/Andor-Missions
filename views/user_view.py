@@ -16,7 +16,7 @@ class UserView(ft.View):
         
         self.search_field = ft.TextField(
             label="Pesquisar missões",
-            prefix_icon=ft.icons.SEARCH,
+            prefix_icon=ft.Icons.SEARCH,
             border_color=COLORS["secondary"],
             focused_border_color=COLORS["accent"],
             color=COLORS["text"],
@@ -53,7 +53,7 @@ class UserView(ft.View):
                                             expand=True,
                                         ),
                                         ft.IconButton(
-                                            icon=ft.icons.LOGOUT,
+                                            icon=ft.Icons.LOGOUT,
                                             icon_color=COLORS["accent"],
                                             tooltip="Sair",
                                             on_click=lambda _: self.handle_logout(),
@@ -69,7 +69,7 @@ class UserView(ft.View):
                                 [
                                     self.search_field,
                                     ft.IconButton(
-                                        icon=ft.icons.REFRESH,
+                                        icon=ft.Icons.REFRESH,
                                         icon_color=COLORS["text"],
                                         tooltip="Atualizar",
                                         on_click=lambda _: self.load_missions(),
@@ -118,7 +118,7 @@ class UserView(ft.View):
                 ft.Container(
                     content=ft.Column(
                         [
-                            ft.Icon(ft.icons.SEARCH_OFF, size=64, color=COLORS["text"], opacity=0.3),
+                            ft.Icon(ft.Icons.SEARCH_OFF, size=64, color=COLORS["text"], opacity=0.3),
                             ft.Text(
                                 "Nenhuma missão encontrada",
                                 size=18,

@@ -32,11 +32,11 @@ share/python-wheels/
 MANIFEST
 
 # Environments
-# Keep .env ignored (local credentials). If you use a CI/provider secrets, don't commit .env
-#.env
-#.env.*
-#.venv
-#env/
+
+.env
+.env.*
+.venv
+env/
 venv/
 ENV/
 env.bak/
