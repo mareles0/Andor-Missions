@@ -95,7 +95,7 @@ class LoginView(ft.View):
             show_snack(self.page, create_alert("Preencha todos os campos", is_error=True))
             return
         
-        # Login via Supabase Auth
+      
         result = auth_manager.login(email, password)
         
         if result:

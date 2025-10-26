@@ -1,4 +1,3 @@
-
 import flet as ft
 from config import COLORS
 from auth import session
@@ -16,8 +15,7 @@ def main(page: ft.Page):
     page.theme_mode = ft.ThemeMode.DARK
     page.bgcolor = COLORS["background"]
     page.padding = 0
-    # Configurações de janela removidas para web app
-    # A aplicação se adapta automaticamente ao tamanho da tela
+    
     
     
     def on_login_success():
@@ -81,6 +79,6 @@ def main(page: ft.Page):
 
 
 if __name__ == "__main__":
-    # Para web app: usa view=ft.AppView.WEB_BROWSER e port=8550
+    
     ft.app(target=main, view=ft.AppView.WEB_BROWSER, port=8550)
 

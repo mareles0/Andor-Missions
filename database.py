@@ -1,4 +1,3 @@
-
 from typing import Optional, List, Dict, Any
 import httpx
 from config import SUPABASE_URL, SUPABASE_ANON_KEY
@@ -22,9 +21,7 @@ class SupabaseDB:
             "Prefer": "return=representation"
         }
     
-    # ====================
-    # MÉTODOS DE MISSÕES
-    # ====================
+  
     
     def get_missions(self, access_token: str = None) -> List[Dict[str, Any]]:
         """Retorna todas as missões ordenadas por data de criação"""
@@ -151,6 +148,5 @@ class SupabaseDB:
             return False
 
 
-# Nota: db será inicializado no supabase_client.py
 db = None
 

@@ -1,4 +1,3 @@
-
 import flet as ft
 
 from ui_components import *

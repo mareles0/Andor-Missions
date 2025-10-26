@@ -1,10 +1,8 @@
-
 import flet as ft
 from config import COLORS
 
 
 def show_snack(page, snackbar):
-    """Helper para mostrar SnackBar no Flet 0.28.3"""
     page.overlay.append(snackbar)
     snackbar.open = True
     page.update()

@@ -1,6 +1,3 @@
-"""
-Cliente Supabase compartilhado para toda a aplicação
-"""
 from supabase import create_client
 from config import SUPABASE_URL, SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY
 from auth import AuthManager

@@ -1,3 +1,4 @@
+# == Python ==
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -31,13 +32,19 @@ share/python-wheels/
 MANIFEST
 
 # Environments
-.env
-.venv
-env/
+# Keep .env ignored (local credentials). If you use a CI/provider secrets, don't commit .env
+#.env
+#.env.*
+#.venv
+#env/
 venv/
 ENV/
 env.bak/
 venv.bak/
+__pypackages__/
+
+# Virtual environment for Pyright / Pylance
+venv/
 
 # Unit test / coverage reports
 htmlcov/
@@ -59,19 +66,38 @@ coverage.xml
 # pyenv
 .python-version
 
-# Flet build files
-build/
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre
+.pyre/
+
+# == Flet / Buildozer / Android ==
+# Flet build and binary artifacts
+flet_build/
 *.apk
 *.aab
 *.ipa
 
-# Buildozer files (Android)
+# Buildozer
 .buildozer/
 bin/
 buildozer.spec
 build_apk.ps1
 build.log
 
+# python-for-android caches
+.local/share/python-for-android/
+
+# Android / Java keystores
+*.jks
+*.keystore
+*.pem
+*.p12
+
+# == Editors / IDEs ==
 # VS Code
 .vscode/
 *.code-workspace
@@ -79,6 +105,14 @@ build.log
 # PyCharm
 .idea/
 
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Eclipse
+.settings/
+
+# == OS generated files ==
 # macOS
 .DS_Store
 
@@ -86,10 +120,23 @@ build.log
 Thumbs.db
 desktop.ini
 
-# Temporary files
+# == Logs & temp ==
+*.log
 *.tmp
 *.temp
 ~*
 
-# Logs
-*.log
+# == Secrets / keys ==
+# Generic secrets
+*.env.local
+secrets.yml
+secret-*.json
+
+# == Misc ==
+coverage/
+dist/
+_dist/
+
+# If you generated documentation or other build dirs
+docs/_build/
+

@@ -1,4 +1,3 @@
-
 from typing import Optional, Dict, Any
 from supabase import Client
 
@@ -15,8 +14,7 @@ class AuthManager:
         Registra novo usuário usando Supabase Admin API (bypass restrições)
         is_admin será armazenado no user_metadata
         """
-        try:
-            # Usar Admin API para criar usuário (bypassa confirmação de email)
+        try:          
             response = self.admin_client.auth.admin.create_user({
                 "email": email,
                 "password": password,
@@ -144,6 +142,5 @@ class SessionManager:
         return ""
 
 
-# Sessão global
 session = SessionManager()
 
